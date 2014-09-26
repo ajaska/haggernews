@@ -16,7 +16,7 @@ def get_page(path):
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
     raw_data = opener.open(url).read()
 
-    if(path.endswith(('.png','.jpg','.ico','.css'))):
+    if(path.endswith(('.gif', '.png','.jpg','.ico','.css'))):
         return raw_data
 
     data = lxml.html.document_fromstring(raw_data)
