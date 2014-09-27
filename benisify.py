@@ -1,12 +1,12 @@
 import functools
 import random
 import re
-# import unicodedata
+import unicodedata
 
 def benisify(s):
     return functools.reduce(lambda acc, f: f(acc), [
         lambda s: s.lower(),
-#        lambda s: unicodedata.normalize('NFKD', s),
+        lambda s: unicodedata.normalize('NFKD', s),
         lambda s: s.replace('x', 'cks'),
         lambda s: re.sub(r'ing','in', s),
         lambda s: re.sub(r'you', 'u', s),
