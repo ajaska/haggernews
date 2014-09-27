@@ -8,8 +8,6 @@ from benisify import benisify
 app = flask.Flask(__name__)
 app.config.from_object(__name__)
 
-cache = {}
-
 static = ('.gif', '.png', '.jpg', '.ico', '.css', '.txt')
 
 @app.route('/', defaults={'path': ''})
@@ -62,6 +60,8 @@ def correct(html_string):
     return lxml.html.tostring(htree)
 
 # Cache functions
+cache = {}
+
 def get_cache(key):
     if key in cache:
         if datetime.datetime.now() - cache[key]['time'] < datetime.timedelta(minutes=cache[key]['life']):
