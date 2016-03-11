@@ -46,7 +46,7 @@ def correct(html_string):
     htree = lxml.html.document_fromstring(html_string, parser=hparser)
 
     # ``Correct'' the links, navbar, title, and comments
-    sel = lxml.cssselect.CSSSelector('.title a, .pagetop > a, a[href="news"], title, .comment font, .comment font > p')
+    sel = lxml.cssselect.CSSSelector('.title a, .pagetop > a, a[href="news"], title, .comment > span, .comment p')
     for t in sel(htree):
         if t is not None and t.text:
             t.text = benisify(t.text)
